@@ -32,6 +32,26 @@ class QuantileEstimator
     samples.insert(idx, item)
   end
 
+  def compress!
+    n = samples.length
+    i = n - 2
+    accum = []
+    while(i >= 1)
+      current = samples[i]
+      next_one = samples[i+1]
+      q = current.g + next_one.g + next_one.delta
+      if(q <= invariant.upper_bound(samples[i].rank, n))
+        accum << current.merge(next_one)
+      else
+        accum << current
+      end
+      i -= 1
+    end
+    self.samples = accum.reverse
+    p self.samples
+    self.samples
+  end
+
   def query(phi)
     r_i = 0
     (1..(samples.size-1)).each do |i|

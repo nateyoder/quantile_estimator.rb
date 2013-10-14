@@ -10,4 +10,8 @@ class Item
     self.delta = delta
     self.rank  = rank
   end
+
+  def merge(item)
+    Item.new(item.value, self.g + item.g, item.delta)
+  end
 end
