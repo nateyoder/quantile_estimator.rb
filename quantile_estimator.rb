@@ -8,28 +8,24 @@ class QuantileEstimator
   end
 
   def insert(value)
-    idx = 0
-    item =
-      if self.samples.length > 0
-        last_item = nil
-        samples.each do |item|
-          if value < item.value
-            last_item = item
-            last_item.rank = 0
-            break
-          else
-            item.rank = self.samples[idx-1].rank + item.g if (idx - 1 > 0)
-            last_item = item
-            idx += 1 if idx < samples.length
-          end
-        end
-        invariant = @invariant.upper_bound(last_item.rank, samples.length)
-        # puts invariant
-        Item.new(value, 1, invariant.to_f.floor - 1)
-      else
-        Item.new(value, 1, 0)
-      end
-    samples.insert(idx, item)
+    i = 0
+    r_i = 0
+
+    while(i < samples.length)
+      item = samples[i]
+      break if item.value > value # determines the order
+      r_i = r_i + item.g
+      i += 1
+    end
+    delta = if (i-1 < 0) || (i == samples.length)
+              0
+            else
+              # r_i
+              @invariant.upper_bound(r_i, samples.length).floor - 1
+            end
+
+    item = Item.new(value, 1, delta)
+    samples.insert(i, item)
   end
 
   def compress!
@@ -41,14 +37,15 @@ class QuantileEstimator
       next_one = samples[i+1]
       q = current.g + next_one.g + next_one.delta
       if(q <= invariant.upper_bound(samples[i].rank, n))
-        accum << current.merge(next_one)
-      else
-        accum << current
+        # p current
+        # p next_one
+        # p current.merge(next_one)
+        samples[i+1] = current.merge(next_one)
+        samples.delete_at(i)
       end
       i -= 1
     end
-    self.samples = accum.reverse
-    p self.samples
+    # self.samples = accum.reverse
     self.samples
   end
 
@@ -66,5 +63,6 @@ class QuantileEstimator
         return previous.value
       end
     end
+    nil
   end
 end
