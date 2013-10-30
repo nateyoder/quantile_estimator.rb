@@ -1,4 +1,6 @@
-class QuantileEstimator
+require "invariant"
+
+class Estimator
   attr_accessor :samples
   attr_reader :invariant
 
