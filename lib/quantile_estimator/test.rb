@@ -1,4 +1,4 @@
-# require "quantile"
+require "rubygems"
 require "quantile_estimator"
 require "item"
 require "invariant"
