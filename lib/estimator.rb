@@ -1,12 +1,36 @@
-require "invariant"
+require 'invariant'
+require 'item'
 
 class Estimator
   attr_accessor :samples
   attr_reader :invariant
 
+  class Cursor
+    def initialize(array, start=0)
+      @array = array
+      @start = start
+    end
+
+    def ~
+      @array[@start]
+    end
+
+    def remove!
+      @array.delete_at(@start)
+    end
+
+    def next
+      @next ||= Cursor.new(@array, @start + 1)
+    end
+  end
+
   def initialize(invariant)
     @invariant = invariant
     self.samples = []
+  end
+
+  def n
+    samples.length
   end
 
   def insert(value)
@@ -19,36 +43,30 @@ class Estimator
       r_i = r_i + item.g
       i += 1
     end
-    delta = if (i-1 < 0) || (i == samples.length)
+    delta = if (i-1 < 0) || (i == n)
               0
             else
               # r_i
-              @invariant.upper_bound(r_i, samples.length).floor - 1
+              [0, @invariant.upper_bound(r_i, n).floor - 1].max
             end
 
-    item = Item.new(value, 1, delta)
-    samples.insert(i, item)
+    samples.insert(i, Item.new(value, 1, delta, r_i))
   end
 
   def compress!
-    n = samples.length
-    i = n - 2
-    accum = []
-    while(i >= 1)
-      current = samples[i]
-      next_one = samples[i+1]
-      q = current.g + next_one.g + next_one.delta
-      if(q <= invariant.upper_bound(samples[i].rank, n))
-        # p current
-        # p next_one
-        # p current.merge(next_one)
-        samples[i+1] = current.merge(next_one)
-        samples.delete_at(i)
+    r_i = 0.0
+    c = Cursor.new(self.samples)
+    while (~c != nil) && (~c.next != nil)
+      r_i = (~c).rank + (~c.next).value + (~c.next).delta
+      if r_i <= @invariant.upper_bound(r_i, n)
+        removed = ~c.next
+        (~c).value = removed.value
+        (~c).delta = removed.delta
+        c.next.remove!
       end
-      i -= 1
+      r_i += (~c).rank
+      c = c.next
     end
-    # self.samples = accum.reverse
-    self.samples
   end
 
   def query(phi)

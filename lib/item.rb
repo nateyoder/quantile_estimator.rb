@@ -14,4 +14,8 @@ class Item
   def merge(item)
     Item.new(item.value, self.g + item.g, item.delta, item.rank)
   end
+
+  def to_s
+    [value, g, rank, delta].inspect
+  end
 end
