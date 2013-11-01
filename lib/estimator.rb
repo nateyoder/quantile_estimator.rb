@@ -66,10 +66,9 @@ class Estimator
     while (~c != nil) && (~c.next != nil)
       if ((~c.next).g + (~c).g + (~c).delta).to_f <=
           invariant.upper_bound((~c.next).rank, n)
-        removed    = ~c.next
-        (~c).value = removed.value
-        (~c).delta = removed.delta
-        (~c).g    += removed.g
+        removed   = ~c.next
+        (~c).rank = removed.rank
+        (~c).g   += removed.g
         c.next.remove!
       else
       end
