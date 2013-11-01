@@ -20,7 +20,7 @@ class Estimator
     end
 
     def next
-      @next ||= Cursor.new(@array, @start + 1)
+      Cursor.new(@array, @start + 1)
     end
   end
 
@@ -43,46 +43,54 @@ class Estimator
       r_i = r_i + item.g
       i += 1
     end
+
     delta = if (i-1 < 0) || (i == n)
               0
             else
               # r_i
-              [0, @invariant.upper_bound(r_i, n).floor - 1].max
+              [0, invariant.upper_bound(r_i, n).floor - 1].max
             end
 
     samples.insert(i, Item.new(value, 1, delta, r_i))
+
+    while(i < samples.length)
+      item = samples[i]
+      r_i = r_i + item.g
+      item.rank = r_i
+      i += 1
+    end
   end
 
   def compress!
-    r_i = 0.0
-    c = Cursor.new(self.samples)
+    c = Cursor.new(self.samples.reverse!)
     while (~c != nil) && (~c.next != nil)
-      r_i = (~c).rank + (~c.next).value + (~c.next).delta
-      if r_i <= @invariant.upper_bound(r_i, n)
-        removed = ~c.next
+      if ((~c.next).g + (~c).g + (~c).delta).to_f <=
+          invariant.upper_bound((~c.next).rank, n)
+        removed    = ~c.next
         (~c).value = removed.value
         (~c).delta = removed.delta
+        (~c).g    += removed.g
         c.next.remove!
+      else
       end
-      r_i += (~c).rank
       c = c.next
     end
+    self.samples.reverse!
   end
 
   def query(phi)
-    r_i = 0
-    (1..(samples.size-1)).each do |i|
-      previous = samples[i - 1]
-      r_i = r_i + previous.g
-
-      item = samples[i]
-      n = samples.length
-      error = phi * n + (invariant.upper_bound(phi * n, n) /2)
-
-      if(r_i + item.g + item.delta > error)
-        return previous.value
+    if n == 0
+      nil
+    else
+      rank = 0
+      c = Cursor.new(samples)
+      while ~c != nil
+        if rank + (~c).g + (~c).delta > (phi * n + invariant.upper_bound(phi * n, n) / 2)
+          return (~c).value
+        end
+        rank = rank + (~c).g
+        c = c.next
       end
     end
-    nil
   end
 end

@@ -16,6 +16,6 @@ class Item
   end
 
   def to_s
-    [value, g, rank, delta].inspect
+    [value, g, delta, rank].inspect
   end
 end

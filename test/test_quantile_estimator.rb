@@ -39,6 +39,9 @@ class QuantileEstimatorTest < Test::Unit::TestCase
 
     estimator.compress!
 
+    puts "DEBUG"
+    puts estimator.samples
+
     assert_equal 8,  estimator.n
     assert_equal 6, estimator.query(0.45)
     assert_equal 10, estimator.query(0.8)
