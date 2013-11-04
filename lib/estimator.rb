@@ -1,36 +1,16 @@
-require 'invariant'
-require 'item'
+require 'quantile_estimator/invariant'
+require 'quantile_estimator/item'
+require 'quantile_estimator/cursor'
 
 class Estimator
   attr_accessor :samples
+  attr_accessor :n
   attr_reader :invariant
-
-  class Cursor
-    def initialize(array, start=0)
-      @array = array
-      @start = start
-    end
-
-    def ~
-      @array[@start]
-    end
-
-    def remove!
-      @array.delete_at(@start)
-    end
-
-    def next
-      Cursor.new(@array, @start + 1)
-    end
-  end
 
   def initialize(invariant)
     @invariant = invariant
     self.samples = []
-  end
-
-  def n
-    samples.length
+    self.n = 0
   end
 
   def insert(value)
@@ -44,7 +24,7 @@ class Estimator
       i += 1
     end
 
-    delta = if (i-1 < 0) || (i == n)
+    delta = if (i-1 < 0) || (i == samples.length)
               0
             else
               # r_i
@@ -59,6 +39,8 @@ class Estimator
       item.rank = r_i
       i += 1
     end
+
+    self.n += 1
   end
 
   def compress!
@@ -70,7 +52,6 @@ class Estimator
         (~c).rank = removed.rank
         (~c).g   += removed.g
         c.next.remove!
-      else
       end
       c = c.next
     end
@@ -83,13 +64,17 @@ class Estimator
     else
       rank = 0
       c = Cursor.new(samples)
-      while ~c != nil
-        if rank + (~c).g + (~c).delta > (phi * n + invariant.upper_bound(phi * n, n) / 2)
+      last = (~c).value
+      while ~c != nil && ~c.next != nil
+        last = (~c).value
+        c = c.next
+        rank += (~c).g
+        phi_n = phi * n
+        if (rank + (~c).g + (~c).delta) > (phi_n + (invariant.upper_bound(phi_n, n) / 2))
           return (~c).value
         end
-        rank = rank + (~c).g
-        c = c.next
       end
+      return last
     end
   end
 end
