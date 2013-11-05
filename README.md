@@ -53,20 +53,23 @@ in
 
 ## Pretty Graphs
 
-Using a targeted invariant to keep track of the 0.05, 0.5 and 0.95 quantiles we get
-the following behavior regarding the size of the internal datastructure.
+Using a targeted invariant to keep track of the 0.05, 0.5 and 0.95 quantiles, a
+uniform source of random values and compressing every 100 iterations. We get the
+following behavior regarding the size of the internal data structure:
 
-![compression rate (elements size, lower is better)](https://raw.github.com/diegoeche/quantile_estimator.rb/master/doc/compression.png "compression rate")
+![compression rate (elements size, lower is better)](https://raw.github.com/diegoeche/quantile_estimator.rb/master/doc/compression.png
+ "Elements in the estimator. Lower is better")
 
 Running time behavior is not too bad. The following graph shows the cost of
-insertions in the estimator by compressing on every 100 iterations. The homogeneous
-layer of outlayers probably corresponds to the compression cycles, while the bottom
-line is the cost of compression-less insertions.
+insertions in the estimator. The homogeneous layer of outlayers probably corresponds
+to the compression cycles, while the bottom line is the cost of compression-less
+insertions.
 
-![runtime behavior (ms, lower is better)](https://raw.github.com/diegoeche/quantile_estimator.rb/master/doc/time.png "compression rate")
+![runtime behavior (ms, lower is better)](https://raw.github.com/diegoeche/quantile_estimator.rb/master/doc/time.png "Time in ms. Lower is better")
 
-A uniform-random stream of data was used for both graphs. Different distributions
-would have different behaviors.
+Different distributions, different invariants setups will have different behaviors.
+
+Check your real data before using this!
 
 ## Known issues
 
