@@ -1,6 +1,13 @@
-# QuantileEstimator
+# QuantileEstimator.rb
 
-TODO: Write a gem description
+This implements the quantile estimator described in the paper:
+
+Cormode et. al.:
+"Effective Computation of Biased Quantiles over Data Streams"
+
+Given the different strategies to implement the algorithm I used the easiest one by
+using https://github.com/odo/quantile_estimator as reference for the implementation.
+
 
 ## Installation
 
@@ -18,7 +25,53 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First initialize the estimator. Right now you can either have a `Biased` or
+`Targeted` invariants. The targeted invariant let you select the quantiles you are
+particularly interested and will yield higher compression rates.
+
+    biased = Invariant::Biased.new(0.004)
+    targeted = Invariant::Targeted.new([
+                                        [0.05, 0.02],
+                                        [0.5,  0.02],
+                                        [0.95, 0.02]
+                                       ])
+
+    estimator = Estimator.new(targeted)
+
+Insertion of data is as simple as:
+
+    estimator.insert(value)
+
+The insertion of data _doesn't_ automatically compress it. To compress the data just
+call:
+
+    estimator.compress!
+
+Using these primitives you can build wraps to compress on every nth insert as shown
+in
+[this file](https://github.com/diegoeche/quantile_estimator.rb/blob/master/benchmark.rb)
+
+## Pretty Graphs
+
+Using a targeted invariant to keep track of the 0.05, 0.5 and 0.95 quantiles we get
+the following behavior regarding the size of the internal datastructure. (Compressing
+every 100 insertions)
+
+![compression rate](https://raw.github.com/diegoeche/quantile_estimator.rb/master/doc/compression.png "compression rate")
+
+Running time behavior is not too bad. Given the fact no optimizations are yet to be
+implemented. The following graph shows the cost of insertions in the estimator by
+compressing on every 100 iterations. The homogeneous layer of outlayers probably
+corresponds to the compression cycles, while the bottom line is without that added cost.
+
+![runtime behavior (ms, lower is better)](https://raw.github.com/diegoeche/quantile_estimator.rb/master/doc/time.png "compression rate")
+
+
+## Known issues
+
+The implementation is known not to be thread-safe, and barely to almost no work on
+optimizing it has been done.
+
 
 ## Contributing
 

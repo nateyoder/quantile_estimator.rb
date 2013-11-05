@@ -64,17 +64,21 @@ class Estimator
     else
       rank = 0
       c = Cursor.new(samples)
+      phi_n = phi * n
       last = (~c).value
-      while ~c != nil && ~c.next != nil
+      while ~c != nil
         last = (~c).value
+        break if ~c.next == nil
         c = c.next
-        rank += (~c).g
-        phi_n = phi * n
+
         if (rank + (~c).g + (~c).delta) > (phi_n + (invariant.upper_bound(phi_n, n) / 2))
-          return (~c).value
+          return last
         end
+
+        rank += (~c).g
       end
-      return last
+
+      return (~c).value
     end
   end
 end
