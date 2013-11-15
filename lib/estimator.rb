@@ -7,12 +7,28 @@ class Estimator
   attr_accessor :n
   attr_reader :invariant
 
+  # Creates a new quantile Estimator object using the provided invariant.
+  #
+  # == Parameters:
+  # value::
+  #   An Invariant object
+  #
   def initialize(invariant)
     @invariant = invariant
     self.samples = []
     self.n = 0
   end
 
+  # Inserts a new element into the quantile estimator.
+  # O(n), where n is the number of elements of the internal data structure
+  #
+  # == Parameters:
+  # value::
+  #   A Fixnum to observe
+  #
+  # == Returns:
+  # The number of observations after the insertion
+  #
   def insert(value)
     i = 0
     r_i = 0
@@ -43,21 +59,41 @@ class Estimator
     self.n += 1
   end
 
+  # Compresses the internal data-structure.
+  # O(n), where n is the number of elements of the internal data structure
+  #
+  # == Parameters:
+  #
+  # == Returns:
+  #  The new size of the data-structure
   def compress!
-    c = Cursor.new(self.samples.reverse!)
-    while (~c != nil) && (~c.next != nil)
-      if ((~c.next).g + (~c).g + (~c).delta).to_f <=
-          invariant.upper_bound((~c.next).rank, n)
-        removed   = ~c.next
+    c = Cursor.new(self.samples, self.samples.length - 1)
+    while (~c != nil) && (~c.previous != nil)
+      if ((~c.previous).g + (~c).g + (~c).delta).to_f <=
+          invariant.upper_bound((~c.previous).rank, n)
+        removed   = ~c.previous
         (~c).rank = removed.rank
         (~c).g   += removed.g
-        c.next.remove!
+        c.previous.remove!
+        c = c.previous
       end
-      c = c.next
+      c = c.previous
     end
-    self.samples.reverse!
+    self.samples.length
   end
 
+  # Queries de estimator for the given rank.
+  # O(n), where n is the number of elements of the internal data structure
+  #
+  # == Parameters:
+  # phi::
+  #
+  # A Fixnum between (0, 1) representing the rank to be queried (i.e, 0.5 represents
+  # the 50% quantile)
+  #
+  # == Returns:
+  # The approximate value for the quantile you are checking
+  #
   def query(phi)
     if n == 0
       nil

@@ -5,7 +5,9 @@ class Cursor
   end
 
   def ~
+    if @start >= 0
       @array[@start]
+    end
   end
 
   def remove!
@@ -14,5 +16,9 @@ class Cursor
 
   def next
     Cursor.new(@array, @start + 1)
+  end
+
+  def previous
+    Cursor.new(@array, @start - 1)
   end
 end

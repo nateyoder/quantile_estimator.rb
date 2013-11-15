@@ -1,0 +1,779 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Estimator
+  
+    &mdash; Documentation by YARD 0.8.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (E)</a> &raquo;
+    
+    
+    <span class="title">Estimator</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Estimator
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Estimator</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/estimator.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#invariant-instance_method" title="#invariant (instance method)">- (Object) <strong>invariant</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute invariant.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#n-instance_method" title="#n (instance method)">- (Object) <strong>n</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute n.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#samples-instance_method" title="#samples (instance method)">- (Object) <strong>samples</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute samples.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compress%21-instance_method" title="#compress! (instance method)">- (Object) <strong>compress!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Compresses the internal data-structure.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Estimator) <strong>initialize</strong>(invariant) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates a new quantile Estimator object using the provided invariant.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#insert-instance_method" title="#insert (instance method)">- (Object) <strong>insert</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Inserts a new element into the quantile estimator.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#query-instance_method" title="#query (instance method)">- (Object) <strong>query</strong>(phi) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Queries de estimator for the given rank.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Estimator (class)">Estimator</a></span></tt>) <strong>initialize</strong>(invariant) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates a new quantile Estimator object using the provided invariant.</p>
+
+<h2 id="label-Parameters%3A">Parameters:</h2>
+<dl class="rdoc-list note-list"><dt>value
+<dd>
+<p>An ::Invariant object</p>
+</dd></dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/estimator.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_invariant'>invariant</span><span class='rparen'>)</span>
+  <span class='ivar'>@invariant</span> <span class='op'>=</span> <span class='id identifier rubyid_invariant'>invariant</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_samples'>samples</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="invariant-instance_method">
+  
+    - (<tt>Object</tt>) <strong>invariant</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute invariant</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/estimator.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_invariant'>invariant</span>
+  <span class='ivar'>@invariant</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="n=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="n-instance_method">
+  
+    - (<tt>Object</tt>) <strong>n</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute n</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/estimator.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_n'>n</span>
+  <span class='ivar'>@n</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="samples=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="samples-instance_method">
+  
+    - (<tt>Object</tt>) <strong>samples</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute samples</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/estimator.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_samples'>samples</span>
+  <span class='ivar'>@samples</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="compress!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>compress!</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Compresses the internal data-structure. O(n), where n is the number of
+elements of the internal data structure</p>
+
+<h2 id="label-Parameters%3A">Parameters:</h2>
+
+<h2 id="label-Returns%3A">Returns:</h2>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/estimator.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compress!'>compress!</span>
+  <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='const'>Cursor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_samples'>samples</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_samples'>samples</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>while</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span> <span class='op'>!=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_previous'>previous</span> <span class='op'>!=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_previous'>previous</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delta'>delta</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>&lt;=</span>
+        <span class='id identifier rubyid_invariant'>invariant</span><span class='period'>.</span><span class='id identifier rubyid_upper_bound'>upper_bound</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_previous'>previous</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_rank'>rank</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_removed'>removed</span>   <span class='op'>=</span> <span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_previous'>previous</span>
+      <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_rank'>rank</span> <span class='op'>=</span> <span class='id identifier rubyid_removed'>removed</span><span class='period'>.</span><span class='id identifier rubyid_rank'>rank</span>
+      <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span>   <span class='op'>+=</span> <span class='id identifier rubyid_removed'>removed</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span>
+      <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_previous'>previous</span><span class='period'>.</span><span class='id identifier rubyid_remove!'>remove!</span>
+      <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_previous'>previous</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_previous'>previous</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_samples'>samples</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="insert-instance_method">
+  
+    - (<tt>Object</tt>) <strong>insert</strong>(value) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Inserts a new element into the quantile estimator. O(n), where n is the
+number of elements of the internal data structure</p>
+
+<h2 id="label-Parameters%3A">Parameters:</h2>
+<dl class="rdoc-list note-list"><dt>value
+<dd>
+<p>A Fixnum to observe</p>
+</dd></dl>
+
+<h2 id="label-Returns%3A">Returns:</h2>
+
+<p>The number of observations after the insertion</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/estimator.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_insert'>insert</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_r_i'>r_i</span> <span class='op'>=</span> <span class='int'>0</span>
+
+  <span class='kw'>while</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_samples'>samples</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_item'>item</span> <span class='op'>=</span> <span class='id identifier rubyid_samples'>samples</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span>
+    <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_value'>value</span> <span class='comment'># determines the order
+</span>    <span class='id identifier rubyid_r_i'>r_i</span> <span class='op'>=</span> <span class='id identifier rubyid_r_i'>r_i</span> <span class='op'>+</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_delta'>delta</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='op'>-</span><span class='int'>1</span> <span class='op'>&lt;</span> <span class='int'>0</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span> <span class='op'>==</span> <span class='id identifier rubyid_samples'>samples</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+            <span class='int'>0</span>
+          <span class='kw'>else</span>
+            <span class='comment'># r_i
+</span>            <span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='id identifier rubyid_invariant'>invariant</span><span class='period'>.</span><span class='id identifier rubyid_upper_bound'>upper_bound</span><span class='lparen'>(</span><span class='id identifier rubyid_r_i'>r_i</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_floor'>floor</span> <span class='op'>-</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
+          <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_samples'>samples</span><span class='period'>.</span><span class='id identifier rubyid_insert'>insert</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='comma'>,</span> <span class='const'>Item</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_delta'>delta</span><span class='comma'>,</span> <span class='id identifier rubyid_r_i'>r_i</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='kw'>while</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_samples'>samples</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_item'>item</span> <span class='op'>=</span> <span class='id identifier rubyid_samples'>samples</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_r_i'>r_i</span> <span class='op'>=</span> <span class='id identifier rubyid_r_i'>r_i</span> <span class='op'>+</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span>
+    <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_rank'>rank</span> <span class='op'>=</span> <span class='id identifier rubyid_r_i'>r_i</span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_n'>n</span> <span class='op'>+=</span> <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="query-instance_method">
+  
+    - (<tt>Object</tt>) <strong>query</strong>(phi) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Queries de estimator for the given rank. O(n), where n is the number of
+elements of the internal data structure</p>
+
+<h2 id="label-Parameters%3A">Parameters:</h2>
+<dl class="rdoc-list note-list"><dt>phi
+<dd>
+<p>A Fixnum between (0, 1) representing the rank to be queried (i.e, 0.5
+represents the 50% quantile)</p>
+
+<h2 id="label-Returns%3A">Returns:</h2>
+
+<p>The approximate value for the quantile you are checking</p>
+</dd></dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/estimator.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='id identifier rubyid_phi'>phi</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_rank'>rank</span> <span class='op'>=</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='const'>Cursor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_samples'>samples</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_phi_n'>phi_n</span> <span class='op'>=</span> <span class='id identifier rubyid_phi'>phi</span> <span class='op'>*</span> <span class='id identifier rubyid_n'>n</span>
+    <span class='id identifier rubyid_last'>last</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>while</span> <span class='op'>~</span><span class='id identifier rubyid_c'>c</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+      <span class='id identifier rubyid_last'>last</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
+      <span class='kw'>break</span> <span class='kw'>if</span> <span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span> <span class='op'>==</span> <span class='kw'>nil</span>
+      <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span>
+
+      <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_rank'>rank</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delta'>delta</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='lparen'>(</span><span class='id identifier rubyid_phi_n'>phi_n</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_invariant'>invariant</span><span class='period'>.</span><span class='id identifier rubyid_upper_bound'>upper_bound</span><span class='lparen'>(</span><span class='id identifier rubyid_phi_n'>phi_n</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='int'>2</span><span class='rparen'>)</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_last'>last</span>
+      <span class='kw'>end</span>
+
+      <span class='id identifier rubyid_rank'>rank</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='lparen'>(</span><span class='op'>~</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Nov 15 15:39:43 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.3 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
