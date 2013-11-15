@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{
     This gem implements a simple quantile estimator using Ruby Arrays.
   }
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/diegoeche/quantile_estimator.rb"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
